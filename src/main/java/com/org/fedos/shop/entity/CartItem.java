@@ -2,14 +2,14 @@ package com.org.fedos.shop.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "order_item")
+@Table(name = "cart_item")
 
-public class Order_item {
+public class CartItem {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer order_id;
+    private Integer cart_id;
 
     @Column
     private Integer goods_id;

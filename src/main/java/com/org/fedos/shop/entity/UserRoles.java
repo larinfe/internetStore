@@ -4,7 +4,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "user_roles")
 
-public class User_roles {
+public class UserRoles {
 
 
     @Id
