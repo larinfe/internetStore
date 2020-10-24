@@ -9,10 +9,10 @@ public class OrderItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer order_id;
+    private Integer orderId;
 
     @Column
-    private Integer goods_id;
+    private Integer goodsId;
 
     @Column
     private Integer amount;

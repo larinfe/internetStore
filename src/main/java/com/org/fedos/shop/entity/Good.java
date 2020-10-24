@@ -1,29 +1,28 @@
 package com.org.fedos.shop.entity;
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 
 @Entity
-@Table(name = "users")
+@Table(name = "goods")
 
-public class Users {
+public class Good {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column
+    @Column(name = "name")
     private String name;
 
     @Column
-    private String phone;
+    private String category;
 
     @Column
-    private String address;
+    private BigDecimal price;
 
     @Column
-    private String password;
-
-    @Column
-    private String email;
+    private String img;
 
 }

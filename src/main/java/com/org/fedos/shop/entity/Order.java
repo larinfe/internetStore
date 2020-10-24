@@ -5,7 +5,7 @@ import java.util.Date;
 @Entity
 @Table(name = "orders")
 
-public class Orders {
+public class Order {
 
 
     @Id
@@ -13,13 +13,13 @@ public class Orders {
     private Integer id;
 
     @Column
-    private String goods_id;
+    private Integer goodsId;
 
     @Column
     private Date date;
 
     @Column
-    private Integer client_id;
+    private Integer clientId;
 
     @Column
     private Boolean delivery;
