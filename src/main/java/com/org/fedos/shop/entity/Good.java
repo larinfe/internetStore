@@ -2,9 +2,9 @@ package com.org.fedos.shop.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "users")
+@Table(name = "goods")
 
-public class Users {
+public class Good {
 
 
     @Id
@@ -15,15 +15,12 @@ public class Users {
     private String name;
 
     @Column
-    private String phone;
+    private String category;
 
     @Column
-    private String address;
+    private Number price;
 
     @Column
-    private String password;
-
-    @Column
-    private String email;
+    private String img;
 
 }

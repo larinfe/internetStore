@@ -2,17 +2,17 @@ package com.org.fedos.shop.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "roles")
+@Table(name = "user_roles")
 
-public class Roles {
+public class UserRole {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer user_id;
 
     @Column
-    private String name_role;
+    private Integer role_id;
 
 
 }
