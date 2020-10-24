@@ -13,7 +13,7 @@ public class Order {
     private Integer id;
 
     @Column
-    private String goodsId;
+    private Integer goodsId;
 
     @Column
     private Date date;
