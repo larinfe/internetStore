@@ -12,9 +12,9 @@ public class Cart {
     private Integer id;
 
     @Column
-    private Integer client_id;
+    private Integer clientId;
 
     @Column
-    private Integer total_price;
+    private Integer totalPrice;
 
 }

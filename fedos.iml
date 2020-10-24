@@ -25,6 +25,7 @@
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
           <factory-entry name="ProselyteTutorials" value="422bd085-2de1-4b66-9202-70e674e9d724" />
+          <factory-entry name="entityManagerFactory" value="422bd085-2de1-4b66-9202-70e674e9d724" />
           <factory-entry name="fedos" value="422bd085-2de1-4b66-9202-70e674e9d724" />
         </datasource-mapping>
         <naming-strategy-map />

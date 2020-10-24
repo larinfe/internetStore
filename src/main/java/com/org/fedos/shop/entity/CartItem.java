@@ -9,10 +9,10 @@ public class CartItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer cart_id;
+    private Integer cartId;
 
     @Column
-    private Integer goods_id;
+    private Integer goodsId;
 
     @Column
     private Integer amount;

@@ -13,13 +13,13 @@ public class Order {
     private Integer id;
 
     @Column
-    private String goods_id;
+    private String goodsId;
 
     @Column
     private Date date;
 
     @Column
-    private Integer client_id;
+    private Integer clientId;
 
     @Column
     private Boolean delivery;
