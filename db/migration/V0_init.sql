@@ -41,7 +41,7 @@ create table if not exists orders
 		constraint orders_goods_id_fk
 			references goods,
 	date date not null,
-	client_id integer not null
+	client_id integer
 		constraint fk_client
 			references users,
 	delivery boolean not null
@@ -52,7 +52,8 @@ create table if not exists cart_item
 	cart_id integer not null
 		constraint cart_item_cart_id_fk
 			references cart,
-	goods_id integer not null,
+	goods_id integer not null
+        references goods,
 	amount integer,
 	constraint cart_item_pk_2
 		primary key (cart_id, goods_id),
@@ -71,7 +72,8 @@ create table if not exists order_item
 	order_id integer not null
 		constraint order_item_orders_id_fk
 			references orders,
-	goods_id integer not null,
+	goods_id integer not null
+            references goods,
 	amount integer,
 	constraint order_item_pk
 		primary key (order_id, goods_id)
@@ -88,7 +90,8 @@ create table if not exists user_roles
 	user_id integer not null
 		constraint user_roles_users_id_fk
 			references users,
-	role_id integer not null,
+	role_id integer not null
+            references roles,
 	constraint user_roles_pk
 		primary key (user_id, role_id)
 );
