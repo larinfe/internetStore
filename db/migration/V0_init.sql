@@ -62,16 +62,12 @@ create table if not exists cart_item
 );
 
 create unique index if not exists cart_item_cart_id_uindex
-	on cart_item (cart_id);
-
-create unique index if not exists cart_item_goods_id_uindex
-	on cart_item (goods_id);
+	on cart_item (cart_id, goods_id);
 
 create table if not exists order_item
 (
 	order_id integer not null
-		constraint order_item_orders_id_fk
-			references orders,
+		    references orders,
 	goods_id integer not null
             references goods,
 	amount integer,
@@ -80,35 +76,26 @@ create table if not exists order_item
 );
 
 create unique index if not exists order_item_goods_id_uindex
-	on order_item (goods_id);
-
-create unique index if not exists order_item_order_id_uindex
-	on order_item (order_id);
-
-create table if not exists user_roles
-(
-	user_id integer not null
-		constraint user_roles_users_id_fk
-			references users,
-	role_id integer not null
-            references roles,
-	constraint user_roles_pk
-		primary key (user_id, role_id)
-);
+	on order_item (order_id, goods_id);
 
 create table if not exists roles
 (
 	id integer default 1 not null
 		constraint user_category_pkey
-			primary key
-		constraint roles_user_roles_role_id_fk
-			references user_roles (role_id),
+			primary key,
 	name_role varchar(40) not null
 );
 
-create unique index if not exists user_roles_role_id_uindex
-	on user_roles (role_id);
+create table if not exists user_roles
+(
+    user_id integer not null
+            references users,
+    role_id integer not null
+        references roles,
+    constraint user_roles_pk
+        primary key (user_id, role_id)
+);
 
-create unique index if not exists user_roles_user_id_uindex
-	on user_roles (user_id);
+create unique index if not exists user_roles_role_id_uindex
+	on user_roles (user_id, role_id);
 
