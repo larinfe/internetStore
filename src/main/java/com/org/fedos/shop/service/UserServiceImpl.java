@@ -1,11 +1,12 @@
 package com.org.fedos.shop.service;
 
+import com.org.fedos.shop.dto.UserDto;
 import com.org.fedos.shop.entity.User;
+import com.org.fedos.shop.mapping.UserMapper;
 import com.org.fedos.shop.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -14,30 +15,28 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+    private UserMapper mapper;
 
     @Override
-    public User findById(int id) {
-        Optional<User> result = userRepository.findById(id);
-        User user = null;
-        if(result.isPresent()){
-            user = result.get();
-        }//про елс не стал пиздить так как там совсем непонятно
-        return user;
+    public Optional<UserDto> findById(int id) {
+        Optional<UserDto> result = userRepository.findById(id).map(mapper::mapToDto);
+        return result;
     }
 
     @Override
-    public void create(int id) {
-
+    public Optional<UserDto> create(UserDto userDto) {
+        Optional<UserDto> result = userRepository.create(userDto).map(mapper::mapToDto);
+        return result;
     }
 
     @Override
-    public void update(int id) {
-        //непонятно наверно как-то на сейв можно завязать это все
+    public Optional<UserDto> update(UserDto userDto) {
+        return Optional.of(userRepository.update());
     }
 
     @Override
-    public void save(User user) {
-        userRepository.save(user);
+    public Optional<UserDto> save(UserDto userDto) {
+        return Optional.of(userRepository.save(UserDto));
     }
 
     @Override

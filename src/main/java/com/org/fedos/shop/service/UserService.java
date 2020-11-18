@@ -1,17 +1,19 @@
 package com.org.fedos.shop.service;
 
+import com.org.fedos.shop.dto.UserDto;
 import com.org.fedos.shop.entity.User;
+
+import java.util.Optional;
 
 
 public interface  UserService {
 
-    User findById(int id);//наверное полезно
+    Optional<UserDto> findById(int id);//
 
-    void create(int id);//похоже что-то не то))
+    Optional<UserDto> create(UserDto userDto);//
+    Optional<UserDto> update(UserDto userDto);//
 
-    void update(int id);//непонятно
+    Optional<UserDto> save(UserDto userDto);
 
-    void save(User user);//вроде понятно
-
-    void deleteById(int id);//достаточно понятно
+    void deleteById(int id);//
 }

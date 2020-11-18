@@ -11,24 +11,26 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Optional;
+
 
 @RestController
 @RequestMapping("/api")
 public class UserController {
     private UserService userService;
-    private UserDto userDto;
+
 
     @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
     }
 
-    @GetMapping("/user/{id}")
+    @GetMapping("user/{id}")
     public ResponseEntity<UserDto> getUser(@PathVariable Integer id){
-        User user = userService.findById(id);
-        if (user == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(userDto, HttpStatus.OK);
+//        Optional<UserDto> user = userService.findById(id);
+//        user.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+        return userService.findById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+
+
     }
 }
