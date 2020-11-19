@@ -24,19 +24,25 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<UserDto> create(UserDto userDto) {
-        Optional<UserDto> result = userRepository.create(userDto).map(mapper::mapToDto);
-        return result;
+    public UserDto save(UserDto userDto, int id) {
+        return null;
+    }
+
+//    @Override
+//    public UserDto save(UserDto userDto, int id) {
+//        findById(id);
+//        UserDto result = userRepository.save().map(mapper::mapToDto);
+//        return result;
+//    }
+
+    @Override
+    public void create (UserDto userDto) {
+        userRepository.create();
     }
 
     @Override
-    public Optional<UserDto> update(UserDto userDto) {
-        return Optional.of(userRepository.update());
-    }
-
-    @Override
-    public Optional<UserDto> save(UserDto userDto) {
-        return Optional.of(userRepository.save(UserDto));
+    public UserDto save(UserDto userDto) {
+        return null;
     }
 
     @Override
