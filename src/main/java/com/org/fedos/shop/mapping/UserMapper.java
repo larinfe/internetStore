@@ -2,7 +2,9 @@ package com.org.fedos.shop.mapping;
 
 import com.org.fedos.shop.dto.UserDto;
 import com.org.fedos.shop.entity.User;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UserMapper {
     public UserDto mapToDto(User user){
         UserDto userDto = new UserDto();

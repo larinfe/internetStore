@@ -6,10 +6,7 @@ import com.org.fedos.shop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -25,12 +22,10 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("user/{id}")
-    public ResponseEntity<UserDto> getUser(@PathVariable Integer id){
-//        Optional<UserDto> user = userService.findById(id);
-//        user.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
-        return userService.findById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
-
-
+    @GetMapping("/user/{id}")
+    public ResponseEntity<UserDto> getUser(@PathVariable Integer id) {
+        return userService.findById(id)
+                          .map(ResponseEntity::ok)
+                          .orElse(ResponseEntity.notFound().build());
     }
 }

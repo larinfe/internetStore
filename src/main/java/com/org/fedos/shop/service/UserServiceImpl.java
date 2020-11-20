@@ -11,38 +11,33 @@ import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
-
-
-    @Autowired
     private UserRepository userRepository;
     private UserMapper mapper;
 
+    @Autowired
+    public UserServiceImpl(UserRepository userRepository, UserMapper mapper) {
+        this.userRepository = userRepository;
+        this.mapper = mapper;
+    }
+
     @Override
     public Optional<UserDto> findById(int id) {
-        Optional<UserDto> result = userRepository.findById(id).map(mapper::mapToDto);
-        return result;
-    }
-
-    @Override
-    public UserDto save(UserDto userDto, int id) {
-        return null;
-    }
-
-//    @Override
-//    public UserDto save(UserDto userDto, int id) {
-//        findById(id);
-//        UserDto result = userRepository.save().map(mapper::mapToDto);
-//        return result;
-//    }
-
-    @Override
-    public void create (UserDto userDto) {
-        userRepository.create();
+        return userRepository.findById(id).map(mapper::mapToDto);
     }
 
     @Override
     public UserDto save(UserDto userDto) {
-        return null;
+        User user = Optional.of(userDto)
+                            .map(UserDto::getId)
+                            .flatMap(id -> userRepository.findById(id))
+                            .orElse(new User());
+
+        user.setEmail(userDto.getEmail());
+        user.setAddress(userDto.getAddress());
+
+        User saved = userRepository.save(user);
+
+        return mapper.mapToDto(saved);
     }
 
     @Override

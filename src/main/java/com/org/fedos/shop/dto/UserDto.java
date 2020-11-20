@@ -5,14 +5,6 @@ public class UserDto {
 
     private Integer id;
 
-    public Integer getId(){
-        return id;
-    }
-
-    public void setId(Integer newId){
-        this.id = newId;
-    }
-
     private String name;
 
     private String phone;
@@ -24,6 +16,14 @@ public class UserDto {
     private String email;
 
     public UserDto() {
+    }
+
+    public Integer getId(){
+        return id;
+    }
+
+    public void setId(Integer id){
+        this.id = id;
     }
 
     public String getName() {
