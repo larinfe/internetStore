@@ -25,7 +25,21 @@ public class UserController {
     @GetMapping("/user/{id}")
     public ResponseEntity<UserDto> getUser(@PathVariable Integer id) {
         return userService.findById(id)
-                          .map(ResponseEntity::ok)
-                          .orElse(ResponseEntity.notFound().build());
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
+
+//    @PostMapping("/user")
+//    public ResponseEntity<UserDto> save(@RequestBody UserDto userDto) {
+//        return userService.save(userDto).getEmail()
+//                .map(ResponseEntity::ok)
+//                .orElse(ResponseEntity.notFound().build());
+//    }
+
+//    @DeleteMapping("/user/{id}")
+//    public void delete(@PathVariable Integer id) {
+//        return userService.deleteById(id)
+//                .
+//                .orElse(ResponseEntity.notFound().build());
+//    }
 }

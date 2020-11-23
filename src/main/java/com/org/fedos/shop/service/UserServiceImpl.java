@@ -32,16 +32,14 @@ public class UserServiceImpl implements UserService {
                             .flatMap(id -> userRepository.findById(id))
                             .orElse(new User());
 
-        user.setEmail(userDto.getEmail());
-        user.setAddress(userDto.getAddress());
-
         User saved = userRepository.save(user);
 
-        return mapper.mapToDto(saved);
+        return mapper.dtoToUser(saved);
     }
 
     @Override
     public void deleteById(int id) {
+        Optional<User> user = userRepository.findById(id);
         userRepository.deleteById(id);
     }
 }

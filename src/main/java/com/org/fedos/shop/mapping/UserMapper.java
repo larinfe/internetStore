@@ -16,4 +16,16 @@ public class UserMapper {
         userDto.setPassword(user.getPassword());
         return userDto;
     }
+    public UserDto dtoToUser(User user){
+        UserDto userDto = new UserDto();
+        user.setEmail(userDto.getEmail());
+        user.setAddress(userDto.getAddress());
+        user.setId(user.getId());
+        user.setAddress(user.getAddress());
+        user.setPhone(user.getPhone());
+        user.setName(user.getName());
+        user.setEmail(user.getEmail());
+
+        return userDto;
+    }
 }
